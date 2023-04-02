@@ -1,0 +1,9 @@
+.page {
+  background: #efefef;
+  height: 100vh;
+}
+
+.page-wrap {
+  padding: 72px 20px 0;
+  height: calc(100% - 72px);
+}
