@@ -37,5 +37,50 @@
   max-width: 50%;
 }
 
-.pokeContent {
+.pokeContent > h2 {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.4rem;
+  background: #efefef;
+}
+
+.pokeContentWrap {
+  padding: 5px 10px;
+}
+
+.pokeContentCharacter {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.descriptions-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #ccc;
+  background: #ccc;
+  gap: 1px;
+}
+.descriptions-wrap > div {
+  background: #fff;
+}
+
+.descriptions-wrap > div > h3 {
+  padding: 5px;
+  background: #efefef;
+}
+.descriptions-wrap > div .desc {
+  padding: 5px;
+}
+
+.types {
+  display: inline-block;
+  margin-right: 5px;
+}
+.types > div {
+  padding: 3px 5px;
+  color: #fff;
+}
+.types:last-child {
+  margin-right: 0;
 }

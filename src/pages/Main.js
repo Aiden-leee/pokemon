@@ -10,6 +10,8 @@ import PokemonCardList from "../components/PokemonCardList";
 import PokemonCardBox from "../components/PokemonCardBox";
 
 const ko_names = [];
+const characters = [];
+const geners = [];
 
 const MainPage = () => {
   const { events, initPoke } = useLoaderData();
@@ -28,7 +30,14 @@ const MainPage = () => {
         <PokemonCardBox pokemon={ko_names}>
           <Suspense fallback={LoadingComponent}>
             <Await resolve={initPoke}>
-              {(Poke) => <PokemonCard pokemon={Poke} konames={ko_names} />}
+              {(Poke) => (
+                <PokemonCard
+                  pokemon={Poke}
+                  konames={ko_names}
+                  characters={characters}
+                  geners={geners}
+                />
+              )}
             </Await>
           </Suspense>
         </PokemonCardBox>
@@ -39,24 +48,18 @@ const MainPage = () => {
 
 export default MainPage;
 
-export async function action({ request, params }) {
-  const id = params.pokeId;
-  console.log(id);
-  let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-
-  const response = await fetch(url);
-
-  if (!response.ok)
-    throw json({ message: "Could not save event" }, { status: 500 });
-}
-
 async function loadPoke(pokeId) {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   const initPoke = pokeId || 1;
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${initPoke}`);
   if (!response.ok) {
     return json({ message: "Could not fetch" }, { status: 500 });
   } else {
     const resData = await response.json();
+    if (isMobile || window.innerWidth < 768) {
+      window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+    }
     return resData;
   }
 }
@@ -75,9 +78,9 @@ async function loadEvents() {
   // console.log(allData);
   allData.forEach((pokemon) => {
     ko_names.push(pokemon.names[2].name);
+    characters.push(pokemon.flavor_text_entries[23].flavor_text);
+    geners.push(pokemon.genera[1].genus);
   });
-
-  // console.log(ko_names);
 
   const response = await fetch(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}`

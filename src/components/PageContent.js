@@ -5,6 +5,7 @@ const PageContent = (props) => {
   let bgStyle = {
     background: `url(${props.background}) no-repeat`,
     backgroundSize: "cover",
+    backgroundPosition: "center 0",
   };
 
   return (

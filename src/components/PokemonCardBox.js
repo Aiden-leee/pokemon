@@ -4,7 +4,7 @@ import Card from "../UI/Card";
 import styles from "./PokemonCard.module.css";
 const PokemonCardBox = (props) => {
   const params = useParams();
-  const { pokeId } = params;
+  const pokeId = params.pokeId || 1;
 
   return (
     <>

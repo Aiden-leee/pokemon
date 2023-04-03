@@ -1,8 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainPage, {
-  loader as eventsLoader,
-  action as pokeAction,
-} from "./pages/Main";
+import CatchPage from "./pages/Catch";
+import MainPage, { loader as eventsLoader } from "./pages/Main";
 import RootLayout from "./pages/Root";
 
 const router = createBrowserRouter([
@@ -23,9 +21,12 @@ const router = createBrowserRouter([
             index: true,
             element: <MainPage />,
             loader: eventsLoader,
-            action: pokeAction,
           },
         ],
+      },
+      {
+        path: "catch",
+        element: <CatchPage />,
       },
     ],
   },
