@@ -1,0 +1,104 @@
+.EncounterTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+  background: #ffdd61;
+  color: #6a4600;
+  font-weight: bold;
+  border-radius: 12px 12px 0 0;
+}
+.EncounterTitle button {
+  background: none;
+  border: 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.EncounterTitle button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.battleScreen {
+  overflow: auto;
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
+  background: url("../assets/images/encounter_bg.jpg") no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  border-radius: 0 0 12px 12px;
+}
+.wild-pokemon-wrap {
+  overflow: auto;
+  height: 100%;
+}
+.wild-pokemon {
+  text-align: center;
+  height: 100%;
+}
+
+.message {
+  color: #000;
+  font-size: 1.3rem;
+  background: #ffffff;
+  padding: 5px 10px;
+  border: 3px solid #858585;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.wild-pokemon-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+  height: calc(100% - 50px);
+}
+.wild-pokemon-image img {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  min-height: 250px;
+  animation: move 1s ease infinite, fadeIn 1s ease-in-out;
+}
+
+.wild-pokemon-name {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  color: #000;
+  background: #fec930;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes move {
+  0% {
+    transform: translate(0, -15px);
+  }
+  50% {
+    transform: translate(0, 0px);
+  }
+  100% {
+    transform: translate(0, -15px);
+  }
+}

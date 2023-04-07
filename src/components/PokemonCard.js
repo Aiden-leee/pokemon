@@ -1,7 +1,7 @@
 import styles from "./PokemonCard.module.css";
 import { pokemonTypesTransform } from "../utils/pokemonTypesTransform";
-const PokemonCard = ({ pokemon, konames, characters, geners }) => {
-  const id = pokemon.id - 1;
+
+const PokemonCard = ({ pokemon }) => {
   const transformKg = (pokemon.weight * 0.1).toFixed(1);
   const transformHeight = (pokemon.height * 0.1).toFixed(1);
 
@@ -16,21 +16,19 @@ const PokemonCard = ({ pokemon, konames, characters, geners }) => {
       }
     </div>
   ));
+
   return (
     <>
       <div className={styles.pokemonCardContent}>
         <div className={styles.pokemonCardContentWrap}>
           <div className={styles.pokeBox}>
-            <img
-              src={pokemon.sprites.other["official-artwork"].front_default}
-              alt={pokemon.name}
-            />
+            <img src={pokemon.image} alt={pokemon.name} />
           </div>
           <div className={styles.pokeContent}>
-            <h2>{konames[id]}</h2>
+            <h2>{pokemon.name}</h2>
             <div className={styles.pokeContentWrap}>
               <div className={styles.pokeContentCharacter}>
-                {characters[id]}
+                {pokemon.characters[0].flavor_text}
               </div>
               <div className={styles["descriptions-wrap"]}>
                 <div className="">
@@ -39,7 +37,7 @@ const PokemonCard = ({ pokemon, konames, characters, geners }) => {
                 </div>
                 <div>
                   <h3>분류</h3>
-                  <div className={styles.desc}>{geners[id]}</div>
+                  <div className={styles.desc}>{pokemon.geners}</div>
                 </div>
                 <div>
                   <h3>무게</h3>
@@ -57,5 +55,5 @@ const PokemonCard = ({ pokemon, konames, characters, geners }) => {
     </>
   );
 };
-// pokemon.sprites.other["official-artwork"].front_default
+
 export default PokemonCard;

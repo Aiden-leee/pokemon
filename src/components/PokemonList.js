@@ -1,18 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import styles from "./PokemonList.module.css";
 
-const PokemonList = ({ pokemons }) => {
+const PokemonList = ({ pokemons, onSelectPokemon }) => {
   const pokemon = pokemons.map((pokemon) => (
     <li key={pokemon.id}>
-      <Link to={`/${pokemon.id}`}>
+      <button onClick={() => onSelectPokemon(pokemon.name)}>
         <div>
           <img src={pokemon.image} alt={pokemon.name} />
         </div>
         <span>
           {pokemon.id}. {pokemon.name}
         </span>
-      </Link>
+      </button>
     </li>
   ));
   return (

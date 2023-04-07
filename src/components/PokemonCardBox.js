@@ -1,16 +1,23 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import Card from "../UI/Card";
 import styles from "./PokemonCard.module.css";
+import { CgCloseO } from "react-icons/cg";
+
 const PokemonCardBox = (props) => {
-  const params = useParams();
-  const pokeId = params.pokeId || 1;
+  const onConfirm = props.confirm ? (
+    <button onClick={props.confirm} className={styles.closeIcon}>
+      <CgCloseO size={20} color="#6a4600" />
+    </button>
+  ) : (
+    ""
+  );
 
   return (
     <>
-      <Card width="50%">
+      <Card width={props.width}>
         <div className={styles.pokemonTitle}>
-          <h2>{props.pokemon[pokeId - 1]}</h2>
+          <h2>{props.currentName}</h2>
+          {onConfirm}
         </div>
         {props.children}
       </Card>

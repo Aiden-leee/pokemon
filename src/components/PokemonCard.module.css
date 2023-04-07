@@ -10,6 +10,8 @@
 }
 
 .pokemonTitle {
+  display: flex;
+  justify-content: space-between;
   font-size: 16px;
   padding: 10px 20px;
   background: #ffdd61;
@@ -83,4 +85,13 @@
 }
 .types:last-child {
   margin-right: 0;
+}
+
+.closeIcon {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.closeIcon:hover {
+  opacity: 0.7;
 }

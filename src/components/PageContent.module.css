@@ -4,13 +4,14 @@
 }
 
 .page-wrap {
-  padding: 72px 20px 0;
-  height: calc(100% - 72px);
+  padding: 72px 20px;
+  height: calc(100% - 144px);
 }
 
 @media only screen and (max-width: 768px) {
   .page {
-    height: auto;
+    height: 100vh;
+    overflow: auto;
   }
   .page-wrap {
     height: auto;

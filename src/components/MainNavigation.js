@@ -3,6 +3,7 @@ import { Link, NavLink, useParams } from "react-router-dom";
 import logo from "../assets/images/main_logo.png";
 import encyclopedia from "../assets/images/encyclopedia.png";
 import pikachu from "../assets/images/pikachu.png";
+import mypokemons from "..//assets/images/mypokemons.png";
 import styles from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
@@ -37,6 +38,16 @@ const MainNavigation = () => {
                 }
               >
                 <img src={pikachu} alt="" width="35px" />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/mypokemons"
+                className={({ isActive }) =>
+                  isActive ? styles.isActive : undefined
+                }
+              >
+                <img src={mypokemons} alt="" width="35px" />
               </NavLink>
             </li>
           </ul>

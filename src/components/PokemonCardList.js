@@ -3,10 +3,11 @@ import Card from "../UI/Card";
 import styles from "./PokemonList.module.css";
 
 const PokemonCardList = (props) => {
+  const title = props.title || "Pokemons";
   return (
-    <Card width="50%">
+    <Card width={props.width}>
       <div className={styles.pokemonTitle}>
-        <h2>Pokemons</h2>
+        <h2>{title}</h2>
       </div>
       {props.children}
     </Card>

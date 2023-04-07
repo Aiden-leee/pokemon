@@ -10,4 +10,7 @@
   .division {
     flex-direction: column-reverse;
   }
+  .division.column {
+    flex-direction: column;
+  }
 }

@@ -6,6 +6,7 @@ const PageContent = (props) => {
     background: `url(${props.background}) no-repeat`,
     backgroundSize: "cover",
     backgroundPosition: "center 0",
+    backgroundAttachment: "fixed",
   };
 
   return (

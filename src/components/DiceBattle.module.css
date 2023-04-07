@@ -1,0 +1,103 @@
+.diceBattleTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+  background: #ffdd61;
+  color: #6a4600;
+  font-weight: bold;
+  border-radius: 12px 12px 0 0;
+}
+
+.diceBattleWrap {
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  height: calc(100% - 36px);
+}
+
+.diceBattleInfo {
+  height: 100%;
+  overflow: auto;
+}
+
+.diceBattleInfoWrap {
+  position: relative;
+  height: 100%;
+}
+
+.DiceBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attackFromPokemon {
+  padding: 0 0 30px;
+  text-align: center;
+}
+.attackFromPokemon > p {
+  background: #fedc6b;
+  padding: 10px;
+  border-radius: 8px;
+}
+.attackFromPokemon > p strong {
+  font-weight: bold;
+}
+
+.button {
+  margin-top: 30px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.attackButton {
+  background: #ff6a6a;
+  color: #fff;
+  cursor: pointer;
+}
+.attackButton:disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.attackButton:hover {
+  background: #e53f3f;
+}
+
+.getButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #000;
+  background: #c9c9c9;
+  border: 1px solid #5a5a5a;
+}
+
+.getButton:hover {
+  background: #b2b2b2;
+}
+
+.battleMessage {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 10px;
+  text-align: center;
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.winMessage {
+  background: #337ccd;
+}
+.failedMessage {
+  background: #be4d4d;
+}
+.battlingdMessage {
+  background: #979797;
+}
