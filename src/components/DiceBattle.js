@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Card from "../UI/Card";
 import Dice from "../UI/Dice";
 import styles from "./DiceBattle.module.css";
@@ -8,29 +8,77 @@ import { pocketActions } from "../store/pocket-slice";
 import { useNavigate } from "react-router-dom";
 
 let wildPokemonAttack;
+const diceInitState = {
+  startBattle: false,
+  touchedDice: false, // 주사위 굴림 여부
+  isWin: false, // 승부상태
+  isShowMessage: false, // 상태 메시지
+  isBattling: false, // 배틀중 여부
+};
+
+const diceReducer = (state, action) => {
+  switch (action.type) {
+    case "DICE_TOUCHED":
+      return {
+        ...state,
+        startBattle: true,
+        touchedDice: true,
+        isBattling: true,
+      };
+    case "DICE_BATTLE_NEXT":
+      return {
+        ...state,
+        startBattle: true,
+        touchedDice: false,
+        isBattling: false,
+      };
+    case "DICE_WIN":
+      return {
+        ...state,
+        startBattle: true,
+        isWin: true,
+        isBattling: false,
+        isShowMessage: true,
+      };
+    case "DICE_LOSE":
+      return {
+        ...state,
+        isWin: false,
+        isBattling: false,
+        isShowMessage: true,
+      };
+    case "DICE_INIT":
+      return {
+        ...state,
+        startBattle: false,
+        touchedDice: false,
+        isWin: false,
+        isShowMessage: false,
+        isBattling: false,
+      };
+    default:
+      return state;
+  }
+};
 
 const DiceBattle = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { targetPokemon, isRefresh, setIsRefresh, setIsBattlingStatus } = props;
   const [attackNumber, setAttackNumber] = useState(); // 내 공격
-  const [battleStates, setBattleStates] = useState({
-    touchedDice: false, // 주사위 굴림 여부
-    isWin: false, // 승부상태
-    isShowMessage: false, // 상태 메시지
-    isBattling: false, // 배틀중 여부
-  });
-  const { touchedDice, isWin, isShowMessage, isBattling } = battleStates;
+  const [diceReducerState, diceReducerDispatch] = useReducer(
+    diceReducer,
+    diceInitState
+  );
+  const { startBattle, touchedDice, isWin, isShowMessage, isBattling } =
+    diceReducerState;
 
   const onRandomDiceHandler = () => {
     let timer;
     clearTimeout(timer);
-    setBattleStates((prev) => ({
-      ...prev,
-      touchedDice: true,
-      isBattling: true,
-      isShowMessage: false,
-    }));
+
+    diceReducerDispatch({ type: "DICE_TOUCHED" });
+
     setIsBattlingStatus(true);
 
     let randomDice = Math.ceil(Math.random() * 6);
@@ -42,22 +90,14 @@ const DiceBattle = (props) => {
 
     if (wildPokemonAttack < randomDice) {
       timer = setTimeout(() => {
-        setBattleStates((prev) => ({
-          ...prev,
-          isWin: true,
-          isShowMessage: true,
-          touchedDice: false,
-        }));
+        diceReducerDispatch({ type: "DICE_WIN" });
         setIsBattlingStatus(false);
-      }, 4000);
+      }, 3000);
     } else {
       timer = setTimeout(() => {
-        setBattleStates((prev) => ({
-          ...prev,
-          isShowMessage: true,
-        }));
+        diceReducerDispatch({ type: "DICE_LOSE" });
         setIsBattlingStatus(false);
-      }, 4000);
+      }, 3000);
     }
   };
 
@@ -74,13 +114,7 @@ const DiceBattle = (props) => {
   };
 
   const initBattleState = () => {
-    setBattleStates((prev) => ({
-      ...prev,
-      touchedDice: false,
-      isWin: false,
-      isShowMessage: false,
-      isBattling: false,
-    }));
+    diceReducerDispatch({ type: "DICE_INIT" });
   };
 
   useEffect(() => {
@@ -91,7 +125,7 @@ const DiceBattle = (props) => {
   }, [isRefresh, setIsRefresh]);
 
   // 공격 메세지
-  const attackMessage = isBattling ? (
+  const attackMessage = startBattle ? (
     <p>
       {targetPokemon.name} 의 공격 <strong>{wildPokemonAttack}</strong>
     </p>
@@ -119,9 +153,9 @@ const DiceBattle = (props) => {
 
   // 배틀 결과
   const battleResult =
-    isWin && isShowMessage ? (
+    !isBattling && isWin && isShowMessage ? (
       <p className={`${styles.battleMessage} ${styles.winMessage}`}>My Win!</p>
-    ) : !isWin && isShowMessage ? (
+    ) : !isBattling && !isWin && isShowMessage ? (
       <p className={`${styles.battleMessage} ${styles.failedMessage}`}>
         failed!
       </p>
@@ -142,8 +176,8 @@ const DiceBattle = (props) => {
             <div className={styles.attackFromPokemon}>{attackMessage}</div>
             <div className={styles.DiceBox}>
               <Dice
-                battleStates={battleStates}
-                setBattleStates={setBattleStates}
+                battleStates={diceReducerState}
+                diceReducerDispatch={diceReducerDispatch}
                 attackNumber={attackNumber}
                 isRefresh={isRefresh}
               />

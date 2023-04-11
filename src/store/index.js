@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import pocketSlice from "./pocket-slice";
-import pokemonsSlice from "./pokemons-slice";
+import uiSlice from "./ui-slice";
+import userSlice from "./user-slice";
 
 const store = configureStore({
   reducer: {
-    pokemons: pokemonsSlice.reducer,
     myPocket: pocketSlice.reducer,
+    ui: uiSlice.reducer,
+    user: userSlice.reducer,
   },
 });
 

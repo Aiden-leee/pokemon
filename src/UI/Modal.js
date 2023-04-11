@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 import PokemonCard from "../components/PokemonCard";
 import PokemonCardBox from "../components/PokemonCardBox";
+
 const ModalOverlay = (props) => {
   return <div className={styles.overlay} onClick={props.onConfirm}></div>;
 };
@@ -23,7 +24,7 @@ const ModalContent = (props) => {
           overflow={props.overflow}
         >
           <PokemonCardBox currentName={props.name} confirm={props.onConfirm}>
-            <PokemonCard pokemon={props.data} />
+            <PokemonCard pokemon={props.data} confirm={props.onConfirm} />
           </PokemonCardBox>
         </Card>
       </div>

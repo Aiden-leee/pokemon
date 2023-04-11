@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Dice.module.css";
 
 const Dice = (props) => {
-  const { battleStates, setBattleStates, attackNumber, isRefresh } = props;
+  const { battleStates, diceReducerDispatch, attackNumber, isRefresh } = props;
   const { touchedDice } = battleStates;
   const [currentDice, setCurrentDice] = useState("");
 
@@ -35,7 +35,7 @@ const Dice = (props) => {
     if (isRefresh) {
       transformDice(1);
     }
-  }, [isRefresh, attackNumber]);
+  }, [isRefresh]);
 
   useEffect(() => {
     if (!touchedDice) {
@@ -43,15 +43,12 @@ const Dice = (props) => {
     }
     const timer = setTimeout(() => {
       transformDice(attackNumber);
-      setBattleStates((prev) => ({
-        ...prev,
-        touchedDice: false,
-      }));
+      diceReducerDispatch({ type: "DICE_BATTLE_NEXT" });
     }, 3000);
     return () => {
       clearTimeout(timer);
     };
-  }, [attackNumber, touchedDice, setBattleStates]);
+  }, [attackNumber, touchedDice, diceReducerDispatch]);
 
   return (
     <div

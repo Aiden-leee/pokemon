@@ -1,0 +1,16 @@
+.useFormTitle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 10px 20px;
+  background: #ffdd61;
+  color: #6a4600;
+  font-weight: bold;
+  border-radius: 12px 12px 0 0;
+}
+
+.userFormWrap {
+  padding: 20px;
+  height: calc(100% - 38px);
+  box-sizing: border-box;
+}

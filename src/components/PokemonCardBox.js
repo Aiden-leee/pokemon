@@ -8,9 +8,7 @@ const PokemonCardBox = (props) => {
     <button onClick={props.confirm} className={styles.closeIcon}>
       <CgCloseO size={20} color="#6a4600" />
     </button>
-  ) : (
-    ""
-  );
+  ) : null;
 
   return (
     <>

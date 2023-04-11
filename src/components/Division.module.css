@@ -9,6 +9,7 @@
 @media only screen and (max-width: 768px) {
   .division {
     flex-direction: column-reverse;
+    align-items: center;
   }
   .division.column {
     flex-direction: column;

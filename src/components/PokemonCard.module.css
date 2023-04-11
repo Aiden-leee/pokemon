@@ -31,7 +31,20 @@
   overflow: auto;
 }
 .pokeBox {
+  position: relative;
   text-align: center;
+}
+
+.pokeBox > button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.pokeBox > button:hover {
+  opacity: 0.8;
 }
 
 .pokeBox img {

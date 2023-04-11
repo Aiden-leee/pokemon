@@ -38,6 +38,12 @@ const pocketSlice = createSlice({
     },
     abandonPokemon(state, action) {
       //
+      const abandonPokemon = action.payload;
+      const result = state.myPokemons.filter(
+        (item) => item.name !== abandonPokemon
+      );
+      state.totalPokemons--;
+      state.myPokemons = result;
     },
   },
 });

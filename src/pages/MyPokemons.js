@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-
 import main_bg from "../assets/images/pokemon_bg.jpg";
 import DivisionLayout from "../components/Division";
 import PageContent from "../components/PageContent";
@@ -15,13 +14,10 @@ const MyPokemonsPage = () => {
   const [currentName, setCurrentName] = useState("이상해씨");
   const [isShow, setIsShow] = useState(false);
 
-  // const LoadingComponent = <ReactLoading type="spin" />;
   const onSelectPokemon = useCallback(
     (pokemon) => {
       setIsShow(true);
       const pokemon_info = myPokemons.find((item) => item.name === pokemon);
-
-      console.log(pokemon_info);
       setCurrentPokemon(() => pokemon_info);
       setCurrentName(() => pokemon_info.name);
     },
@@ -39,7 +35,7 @@ const MyPokemonsPage = () => {
       )}
       <PageContent background={main_bg}>
         <DivisionLayout direction="columns">
-          <PokemonCardList title="My Pokemons">
+          <PokemonCardList title="My Pokemons" width="100%" maxWidth="400px">
             {myPokemons && (
               <PokemonList
                 pokemons={myPokemons}
@@ -54,40 +50,3 @@ const MyPokemonsPage = () => {
 };
 
 export default MyPokemonsPage;
-
-// async function loadPoke(pokeId) {
-//   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-//   const initPoke = pokeId || 1;
-//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${initPoke}`);
-//   if (!response.ok) {
-//     return json({ message: "Could not fetch" }, { status: 500 });
-//   } else {
-//     const resData = await response.json();
-//     if (isMobile || window.innerWidth < 768) {
-//       window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
-//     }
-//     return resData;
-//   }
-// }
-
-// async function loadMyPokemon() {
-//   const response = await fetch(
-//     "https://pokemon-demo-96dd9-default-rtdb.firebaseio.com/pokemons.json"
-//   );
-//   if (!response.ok) {
-//     throw json({ message: "could not fetch" }, { status: 500 });
-//   }
-
-//   const resData = await response.json();
-//   console.log(resData);
-//   return resData;
-// }
-
-// export async function loader({ params }) {
-//   const pokeId = params.pokeId;
-//   return defer({
-//     myPokemons: await loadMyPokemon(),
-//     initPoke: loadPoke(pokeId),
-//   });
-// }

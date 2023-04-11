@@ -1,0 +1,30 @@
+.user-wrap {
+  padding: 20px;
+  height: calc(100% - 38px);
+  box-sizing: border-box;
+}
+.user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-image {
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.round {
+  border-radius: 100%;
+}
+.delete {
+  padding: 8px 20px;
+  background: #a7d1ff;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+}

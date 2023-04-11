@@ -8,46 +8,69 @@ import PokemonList from "../components/PokemonList";
 import ReactLoading from "react-loading";
 import PokemonCardList from "../components/PokemonCardList";
 import PokemonCardBox from "../components/PokemonCardBox";
+import { useSelector } from "react-redux";
+import Modal from "../UI/Modal";
 
 const MainPage = () => {
+  const { isMobile } = useSelector((state) => state.ui);
   const [currentName, setCurrentName] = useState("이상해씨");
   const [currentPokemon, setCurrentPokemon] = useState();
   const { loadPokemons } = useRouteLoaderData("root");
+  const [isShow, setIsShow] = useState(false);
   const LoadingComponent = <ReactLoading type="spin" />;
 
   const onSelectPokemon = useCallback(
     (pokemon) => {
+      setIsShow(true);
       const pokemon_info = loadPokemons.find((item) => item.name === pokemon);
       setCurrentPokemon(() => pokemon_info);
       setCurrentName(() => pokemon_info.name);
     },
     [loadPokemons]
   );
+  const onConfirm = () => {
+    setIsShow(false);
+  };
 
   useEffect(() => {
-    onSelectPokemon("이상해씨");
-  }, [onSelectPokemon]);
+    let time;
+    if (!isMobile) {
+      time = setTimeout(() => {
+        onSelectPokemon("이상해씨");
+      }, 500);
+    }
+    return () => {
+      clearTimeout(time);
+    };
+  }, [onSelectPokemon, isMobile]);
 
   return (
-    <PageContent background={main_bg}>
-      <DivisionLayout>
-        <PokemonCardList width="50%">
-          <Suspense fallback={LoadingComponent}>
-            <Await resolve={loadPokemons}>
-              {(loadEvents) => (
-                <PokemonList
-                  pokemons={loadEvents}
-                  onSelectPokemon={onSelectPokemon}
-                />
-              )}
-            </Await>
-          </Suspense>
-        </PokemonCardList>
-        <PokemonCardBox width="50%" currentName={currentName}>
-          {currentPokemon && <PokemonCard pokemon={currentPokemon} />}
-        </PokemonCardBox>
-      </DivisionLayout>
-    </PageContent>
+    <>
+      {isMobile && isShow && (
+        <Modal name={currentName} data={currentPokemon} onConfirm={onConfirm} />
+      )}
+      <PageContent background={main_bg}>
+        <DivisionLayout>
+          <PokemonCardList width="50%">
+            <Suspense fallback={LoadingComponent}>
+              <Await resolve={loadPokemons}>
+                {(loadEvents) => (
+                  <PokemonList
+                    pokemons={loadEvents}
+                    onSelectPokemon={onSelectPokemon}
+                  />
+                )}
+              </Await>
+            </Suspense>
+          </PokemonCardList>
+          {!isMobile && (
+            <PokemonCardBox width="50%" currentName={currentName}>
+              {currentPokemon && <PokemonCard pokemon={currentPokemon} />}
+            </PokemonCardBox>
+          )}
+        </DivisionLayout>
+      </PageContent>
+    </>
   );
 };
 

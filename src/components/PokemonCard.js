@@ -1,7 +1,14 @@
 import styles from "./PokemonCard.module.css";
 import { pokemonTypesTransform } from "../utils/pokemonTypesTransform";
+import { TbTrashX } from "react-icons/tb";
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { pocketActions } from "../store/pocket-slice";
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, confirm }) => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
   const transformKg = (pokemon.weight * 0.1).toFixed(1);
   const transformHeight = (pokemon.height * 0.1).toFixed(1);
 
@@ -17,12 +24,29 @@ const PokemonCard = ({ pokemon }) => {
     </div>
   ));
 
+  const onDelete = () => {
+    if (window.confirm(`${pokemon.name} 을(를) 버리겠습니까?`)) {
+      dispatch(pocketActions.abandonPokemon(pokemon.name));
+      confirm();
+    }
+  };
+
+  const deleteButton =
+    location.pathname === "/mypokemons" ? (
+      <button onClick={onDelete}>
+        <TbTrashX size={20} color="#6a4600" />
+      </button>
+    ) : (
+      ""
+    );
+
   return (
     <>
       <div className={styles.pokemonCardContent}>
         <div className={styles.pokemonCardContentWrap}>
           <div className={styles.pokeBox}>
             <img src={pokemon.image} alt={pokemon.name} />
+            {deleteButton}
           </div>
           <div className={styles.pokeContent}>
             <h2>{pokemon.name}</h2>

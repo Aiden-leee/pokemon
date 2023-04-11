@@ -56,6 +56,7 @@ async function initPokemon() {
       weight: attr.weight,
       height: attr.height,
       types: attr.types,
+      image: attr.sprites.other["official-artwork"].front_default,
     };
   });
 
@@ -69,11 +70,9 @@ async function initPokemon() {
     return {
       id: index + 1,
       name: data.names[2].name,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-        index + 1
-      }.png`,
       geners: data.genera[1].genus,
       characters: characters[index],
+      image: pokemonAttr[index].image,
       weight: pokemonAttr[index].weight,
       height: pokemonAttr[index].height,
       types: pokemonAttr[index].types,
@@ -83,8 +82,7 @@ async function initPokemon() {
   return pokemons;
 }
 
-export async function loader({ params }) {
-  // const pokeId = params.pokeId;
+export async function loader() {
   return defer({
     loadPokemons: await initPokemon(),
   });

@@ -6,10 +6,9 @@ import DivisionLayout from "../components/Division";
 import DiceBattle from "../components/DiceBattle";
 import { useRouteLoaderData } from "react-router-dom";
 
-let inital = true;
 const CatchPage = () => {
   const { loadPokemons } = useRouteLoaderData("root");
-  const [wildPokemon, setWildPokemon] = useState({});
+  const [wildPokemon, setWildPokemon] = useState();
   const [isRefresh, setIsRefresh] = useState(false);
   const [isbattlingStatus, setIsBattlingStatus] = useState(false);
 
@@ -19,18 +18,17 @@ const CatchPage = () => {
     setWildPokemon(() => targetWildPokemon);
   }, [loadPokemons]);
 
-  const onRefresh = () => {
+  const onRefresh = useCallback(() => {
     randomWildPokemon();
     setIsRefresh(true);
-  };
+  }, [randomWildPokemon]);
 
   useEffect(() => {
-    if (inital) {
-      inital = false;
-      return;
-    }
     randomWildPokemon();
-  }, [randomWildPokemon]);
+    return () => {
+      onRefresh();
+    };
+  }, [randomWildPokemon, onRefresh]);
 
   return (
     <PageContent background={main_bg}>

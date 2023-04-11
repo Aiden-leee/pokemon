@@ -24,7 +24,12 @@
   gap: 10px;
 }
 
+.pokemonList-ul li .img_box {
+  width: 100%;
+}
+
 .pokemonList-ul li img {
+  max-width: 250px;
   width: 100%;
   border-radius: 10px 10px 0 0;
 }
@@ -33,8 +38,10 @@
   display: block;
   padding: 5px 10px;
   border-top: 1px solid #ccc;
+  color: #000;
 }
 .pokemonList-ul li button {
+  width: 100%;
   padding: 0;
   background: none;
   border: 1px solid #ccc;
@@ -43,4 +50,13 @@
 }
 .pokemonList-ul li button:hover {
   background: #fff7de;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
 }
