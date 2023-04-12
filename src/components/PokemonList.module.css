@@ -20,15 +20,31 @@
 
 .pokemonList-ul {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+  /* grid-template-columns: repeat(auto-fill, minmax(30%, auto)); */
+  grid-auto-rows: minmax(130px, auto);
+  grid-template-columns: repeat(3, minmax(30%, auto));
   gap: 10px;
 }
 
+.pokemonList-ul li {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.pokemonList-ul li:hover {
+  background: #fff7de;
+}
+
 .pokemonList-ul li .img_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
+  height: 100%;
 }
 
 .pokemonList-ul li img {
+  display: block;
   max-width: 250px;
   width: 100%;
   border-radius: 10px 10px 0 0;
@@ -36,20 +52,21 @@
 
 .pokemonList-ul li span {
   display: block;
+  width: 100%;
+  margin-top: auto;
   padding: 5px 10px;
-  border-top: 1px solid #ccc;
   color: #000;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
 }
 .pokemonList-ul li button {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
   padding: 0;
   background: none;
-  border: 1px solid #ccc;
-  border-radius: 10px;
   cursor: pointer;
-}
-.pokemonList-ul li button:hover {
-  background: #fff7de;
 }
 
 .empty {

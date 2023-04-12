@@ -13,6 +13,7 @@
   border: 0;
   font-size: 1.2rem;
   cursor: pointer;
+  color: #000;
 }
 .EncounterTitle button:disabled {
   pointer-events: none;

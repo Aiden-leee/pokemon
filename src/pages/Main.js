@@ -1,18 +1,14 @@
-import React, { Suspense, useCallback, useEffect, useState } from "react";
+import React, { Suspense, useCallback, useState } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
 import main_bg from "../assets/images/pokemon_bg.jpg";
 import DivisionLayout from "../components/Division";
 import PageContent from "../components/PageContent";
-import PokemonCard from "../components/PokemonCard";
 import PokemonList from "../components/PokemonList";
 import ReactLoading from "react-loading";
 import PokemonCardList from "../components/PokemonCardList";
-import PokemonCardBox from "../components/PokemonCardBox";
-import { useSelector } from "react-redux";
 import Modal from "../UI/Modal";
 
 const MainPage = () => {
-  const { isMobile } = useSelector((state) => state.ui);
   const [currentName, setCurrentName] = useState("이상해씨");
   const [currentPokemon, setCurrentPokemon] = useState();
   const { loadPokemons } = useRouteLoaderData("root");
@@ -32,26 +28,14 @@ const MainPage = () => {
     setIsShow(false);
   };
 
-  useEffect(() => {
-    let time;
-    if (!isMobile) {
-      time = setTimeout(() => {
-        onSelectPokemon("이상해씨");
-      }, 500);
-    }
-    return () => {
-      clearTimeout(time);
-    };
-  }, [onSelectPokemon, isMobile]);
-
   return (
     <>
-      {isMobile && isShow && (
+      {isShow && (
         <Modal name={currentName} data={currentPokemon} onConfirm={onConfirm} />
       )}
       <PageContent background={main_bg}>
         <DivisionLayout>
-          <PokemonCardList width="50%">
+          <PokemonCardList width="100%" maxWidth="600px">
             <Suspense fallback={LoadingComponent}>
               <Await resolve={loadPokemons}>
                 {(loadEvents) => (
@@ -63,11 +47,6 @@ const MainPage = () => {
               </Await>
             </Suspense>
           </PokemonCardList>
-          {!isMobile && (
-            <PokemonCardBox width="50%" currentName={currentName}>
-              {currentPokemon && <PokemonCard pokemon={currentPokemon} />}
-            </PokemonCardBox>
-          )}
         </DivisionLayout>
       </PageContent>
     </>

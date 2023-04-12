@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
   gap: 20px;
 }
 
@@ -27,4 +28,18 @@
   background: #a7d1ff;
   border: 1px solid #cfcfcf;
   border-radius: 6px;
+}
+.delete:hover {
+  opacity: 0.8;
+}
+
+.logout {
+  padding: 8px 20px;
+  background: #dedede;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+}
+
+.logout:hover {
+  opacity: 0.8;
 }

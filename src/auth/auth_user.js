@@ -5,6 +5,7 @@ import {
 } from "firebase/auth";
 import { auth, gProvider } from "./firebase";
 
+// 사용 x
 export const signupUser = (auth, email, password) => {
   let result;
   createUserWithEmailAndPassword(auth, email, password)
@@ -24,6 +25,7 @@ export const signupUser = (auth, email, password) => {
   return result;
 };
 
+// 사용 x
 export const signinUser = (auth, email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

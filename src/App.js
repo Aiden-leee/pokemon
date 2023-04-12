@@ -69,7 +69,7 @@ function App() {
       } else {
         dispatch(uiActions.checkMobile(false));
       }
-    }, 500);
+    }, 1000);
   }, [dispatch]);
 
   const authCheck = useCallback(async () => {
@@ -77,6 +77,7 @@ function App() {
       if (user) {
         user = JSON.parse(JSON.stringify(user));
         dispatch(userActions.isCurrentUser(user));
+        dispatch(getMyPokemons(user));
       } else {
         dispatch(userActions.isCurrentUser(null));
       }
@@ -84,14 +85,13 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    if (initial) {
+      initial = false;
+      return;
+    }
     authCheck();
     return () => authCheck();
   }, [authCheck]);
-
-  // my pokemon 불러오기
-  useEffect(() => {
-    dispatch(getMyPokemons());
-  }, [dispatch]);
 
   // 나의 포켓몬에 추가하기
   useEffect(() => {

@@ -26,4 +26,5 @@
 .modal-wrap {
   max-height: 600px;
   overflow: auto;
+  margin: 40px 0;
 }

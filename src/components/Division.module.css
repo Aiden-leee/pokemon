@@ -1,6 +1,6 @@
 .division {
   display: flex;
-  height: calc(100% - 100px);
+  height: calc(100% - 50px);
   margin-top: 50px;
   justify-content: space-around;
   gap: 30px;

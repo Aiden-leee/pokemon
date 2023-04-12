@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  const navigate = useNavigate();
   const { isLogined } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLogined) {
       return navigate("/");
     }
-  }, [isLogined, navigate]);
+  }, [navigate, isLogined]);
   return children;
 };
 

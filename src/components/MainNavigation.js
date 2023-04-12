@@ -5,15 +5,15 @@ import encyclopedia from "../assets/images/encyclopedia.png";
 import pikachu from "../assets/images/pikachu.png";
 import mypokemons from "..//assets/images/mypokemons.png";
 import styles from "./MainNavigation.module.css";
-import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../auth/firebase";
 import signout from "../assets/images/signout.png";
 import player from "../assets/images/player.png";
+import { useSelector } from "react-redux";
 
 const MainNavigation = () => {
-  const { isLogined, user } = useSelector((state) => state.user);
-  const [profile, setProfile] = useState();
+  const { user } = useSelector((state) => state.user);
+  const [userInfo, setUserInfo] = useState();
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -28,11 +28,11 @@ const MainNavigation = () => {
         console.log(error);
       });
   };
+
   useEffect(() => {
-    if (user) {
-      setProfile(user.photoURL);
-    }
+    setUserInfo(user);
   }, [user]);
+
   return (
     <header className={styles.header}>
       <div className={styles["header-wrap"]}>
@@ -54,7 +54,7 @@ const MainNavigation = () => {
                 <img src={encyclopedia} alt="" width="35px" />
               </NavLink>
             </li>
-            {isLogined && (
+            {userInfo && (
               <li>
                 <NavLink
                   to="/catch"
@@ -66,7 +66,7 @@ const MainNavigation = () => {
                 </NavLink>
               </li>
             )}
-            {isLogined && (
+            {userInfo && (
               <li>
                 <NavLink
                   to="/mypokemons"
@@ -78,7 +78,7 @@ const MainNavigation = () => {
                 </NavLink>
               </li>
             )}
-            {!isLogined ? (
+            {!userInfo ? (
               <li className={styles.right}>
                 <NavLink
                   to="/signin"
@@ -99,15 +99,13 @@ const MainNavigation = () => {
                       isActive ? styles.isActive : null
                     }
                   >
-                    {user && (
-                      <img
-                        src={profile}
-                        alt="Sign out"
-                        width="32px"
-                        title="my page"
-                        className={styles.round}
-                      />
-                    )}
+                    <img
+                      src={userInfo.photoURL}
+                      alt="Sign out"
+                      width="32px"
+                      title="my page"
+                      className={styles.round}
+                    />
                   </NavLink>
                 </li>
                 <li>
