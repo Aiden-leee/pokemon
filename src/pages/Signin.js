@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 const SigninPage = () => {
   const navigate = useNavigate();
   const { user, isLogined } = useSelector((state) => state.user);
+
   const onSignin = () => {
     googleSignIn();
   };

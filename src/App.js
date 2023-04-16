@@ -85,10 +85,6 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (initial) {
-      initial = false;
-      return;
-    }
     authCheck();
     return () => authCheck();
   }, [authCheck]);

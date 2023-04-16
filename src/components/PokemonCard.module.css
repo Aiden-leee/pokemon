@@ -32,8 +32,10 @@
 }
 .pokeBox {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 250px;
-  text-align: center;
 }
 
 .pokeBox > button {

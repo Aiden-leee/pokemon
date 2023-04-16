@@ -105,6 +105,7 @@ const MainNavigation = () => {
                       width="32px"
                       title="my page"
                       className={styles.round}
+                      referrerPolicy="no-referrer"
                     />
                   </NavLink>
                 </li>

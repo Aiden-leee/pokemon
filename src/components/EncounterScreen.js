@@ -15,7 +15,7 @@ const EncounterScreen = (props) => {
       <div className={styles.EncounterTitle}>
         <h2>Catch Pokemons</h2>
         <button onClick={onRefresh} disabled={isbattlingStatus}>
-          <HiOutlineRefresh />
+          <HiOutlineRefresh size={20} color="#6a4600" />
         </button>
       </div>
       <div className={styles.battleScreen}>

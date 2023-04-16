@@ -1,0 +1,10 @@
+.searchForm {
+  padding: 20px;
+}
+.searchForm input {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}

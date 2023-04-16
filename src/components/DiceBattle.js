@@ -85,9 +85,6 @@ const DiceBattle = (props) => {
     wildPokemonAttack = Math.ceil(Math.random() * 6);
     setAttackNumber(() => randomDice);
 
-    console.log(wildPokemonAttack);
-    console.log(randomDice);
-
     if (wildPokemonAttack < randomDice) {
       timer = setTimeout(() => {
         diceReducerDispatch({ type: "DICE_WIN" });
@@ -103,7 +100,6 @@ const DiceBattle = (props) => {
 
   const getPokemonHandler = () => {
     //
-    console.log(targetPokemon);
     if (!window.confirm(`${targetPokemon.name} 을 잡겠습니까?`)) {
       return;
     }
