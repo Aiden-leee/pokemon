@@ -3,7 +3,7 @@ import styles from "./PokemonList.module.css";
 import modapi from "../assets/images/modapi.png";
 import SearchForm from "./SearchForm";
 
-const PokemonList = ({ pokemons, onSelectPokemon }) => {
+const PokemonList = React.memo(({ pokemons, onSelectPokemon }) => {
   const [searchPokemon, setSearchPokemon] = useState([]);
 
   const onSearchPokemon = (keyword) => {
@@ -44,6 +44,6 @@ const PokemonList = ({ pokemons, onSelectPokemon }) => {
       </div>
     </>
   );
-};
+});
 
 export default PokemonList;

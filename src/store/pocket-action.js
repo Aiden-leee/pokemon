@@ -4,7 +4,7 @@ import { pocketActions } from "./pocket-slice";
 import { child, get, ref, set } from "firebase/database";
 import { db } from "../auth/firebase";
 
-export const catchThePokemon = (myPocket) => {
+export const requestThePokemon = (myPocket) => {
   return async (dispatch) => {
     const catched = () => {
       const uid = localStorage.getItem("uid");
@@ -15,7 +15,7 @@ export const catchThePokemon = (myPocket) => {
       });
     };
     try {
-      await catched();
+      catched();
     } catch (error) {
       console.log(error);
     }
@@ -61,6 +61,7 @@ export const getMyPokemons = (user) => {
   };
 };
 
+// 사용 x
 export const fetchMyPokemons = (user) => {
   return async (dispatch) => {
     const fetchData = async () => {
@@ -89,6 +90,7 @@ export const fetchMyPokemons = (user) => {
   };
 };
 
+// 사용 x
 // store 담기
 export const fetchCatchThePokemon = (pokemon, user) => {
   return async (dispatch) => {

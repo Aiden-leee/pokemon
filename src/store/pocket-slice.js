@@ -42,6 +42,7 @@ const pocketSlice = createSlice({
       const result = state.myPokemons.filter(
         (item) => item.name !== abandonPokemon
       );
+      state.changed = true;
       state.totalPokemons--;
       state.myPokemons = result;
     },

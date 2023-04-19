@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
 import main_bg from "../assets/images/pokemon_bg.jpg";
 import DivisionLayout from "../components/Division";
@@ -15,15 +15,13 @@ const MainPage = () => {
   const [isShow, setIsShow] = useState(false);
   const LoadingComponent = <ReactLoading type="spin" />;
 
-  const onSelectPokemon = useCallback(
-    (pokemon) => {
-      setIsShow(true);
-      const pokemon_info = loadPokemons.find((item) => item.name === pokemon);
-      setCurrentPokemon(() => pokemon_info);
-      setCurrentName(() => pokemon_info.name);
-    },
-    [loadPokemons]
-  );
+  const onSelectPokemon = (pokemon) => {
+    setIsShow(true);
+    const pokemon_info = loadPokemons.find((item) => item.name === pokemon);
+    setCurrentPokemon(() => pokemon_info);
+    setCurrentName(() => pokemon_info.name);
+  };
+
   const onConfirm = () => {
     setIsShow(false);
   };

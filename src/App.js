@@ -8,7 +8,7 @@ import SigninPage from "./pages/Signin";
 import MyPokemonsPage from "./pages/MyPokemons";
 import MyPage from "./pages/MyPage";
 import { auth } from "./auth/firebase";
-import { catchThePokemon, getMyPokemons } from "./store/pocket-action";
+import { getMyPokemons, requestThePokemon } from "./store/pocket-action";
 import { uiActions } from "./store/ui-slice";
 import { userActions } from "./store/user-slice";
 import { onAuthStateChanged } from "firebase/auth";
@@ -72,8 +72,8 @@ function App() {
     }, 1000);
   }, [dispatch]);
 
-  const authCheck = useCallback(async () => {
-    await onAuthStateChanged(auth, (user) => {
+  const authCheck = useCallback(() => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         user = JSON.parse(JSON.stringify(user));
         dispatch(userActions.isCurrentUser(user));
@@ -96,7 +96,7 @@ function App() {
       return;
     }
     if (myPocket.changed) {
-      dispatch(catchThePokemon(myPocket));
+      dispatch(requestThePokemon(myPocket));
     }
   }, [myPocket, dispatch]);
 

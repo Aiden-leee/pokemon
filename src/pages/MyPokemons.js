@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import main_bg from "../assets/images/pokemon_bg.jpg";
 import DivisionLayout from "../components/Division";
 import PageContent from "../components/PageContent";
@@ -14,15 +14,12 @@ const MyPokemonsPage = () => {
   const [currentName, setCurrentName] = useState("이상해씨");
   const [isShow, setIsShow] = useState(false);
 
-  const onSelectPokemon = useCallback(
-    (pokemon) => {
-      setIsShow(true);
-      const pokemon_info = myPokemons.find((item) => item.name === pokemon);
-      setCurrentPokemon(() => pokemon_info);
-      setCurrentName(() => pokemon_info.name);
-    },
-    [myPokemons]
-  );
+  const onSelectPokemon = (pokemon) => {
+    setIsShow(true);
+    const pokemon_info = myPokemons.find((item) => item.name === pokemon);
+    setCurrentPokemon(() => pokemon_info);
+    setCurrentName(() => pokemon_info.name);
+  };
 
   const onConfirm = () => {
     setIsShow(false);

@@ -24,12 +24,10 @@ const SigninPage = () => {
   return (
     <PageContent background={main_bg}>
       <DivisionLayout>
-        {!user ? (
+        {!user && (
           <>
             <UserForm title="Sign In" onSignHandler={onSignin} mode="SignIn" />
           </>
-        ) : (
-          <div>{user.email} 님 로그인 하셨습니다.</div>
         )}
       </DivisionLayout>
     </PageContent>
