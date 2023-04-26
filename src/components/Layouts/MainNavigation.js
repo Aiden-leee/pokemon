@@ -51,7 +51,12 @@ const MainNavigation = () => {
                   isActive ? styles.isActive : null
                 }
               >
-                <img src={encyclopedia} alt="" width="35px" />
+                <img
+                  src={encyclopedia}
+                  alt="포켓몬도감"
+                  width="35px"
+                  title="포켓몬도감"
+                />
               </NavLink>
             </li>
             {userInfo && (
@@ -62,7 +67,12 @@ const MainNavigation = () => {
                     isActive ? styles.isActive : null
                   }
                 >
-                  <img src={pikachu} alt="" width="35px" />
+                  <img
+                    src={pikachu}
+                    alt="포켓몬배틀"
+                    width="35px"
+                    title="포켓몬배틀"
+                  />
                 </NavLink>
               </li>
             )}
@@ -74,7 +84,12 @@ const MainNavigation = () => {
                     isActive ? styles.isActive : null
                   }
                 >
-                  <img src={mypokemons} alt="" width="35px" />
+                  <img
+                    src={mypokemons}
+                    alt="내 포켓몬"
+                    width="35px"
+                    title="내 포켓몬"
+                  />
                 </NavLink>
               </li>
             )}
