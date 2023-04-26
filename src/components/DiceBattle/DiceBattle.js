@@ -178,8 +178,8 @@ const DiceBattle = (props) => {
                 isRefresh={isRefresh}
               />
               {buttonAction}
+              {battleResult}
             </div>
-            {battleResult}
           </div>
         </div>
       </div>
