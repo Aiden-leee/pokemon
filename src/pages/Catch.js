@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import PageContent from "../components/PageContent";
-import main_bg from "../assets/images/pokemon_bg.jpg";
-import EncounterScreen from "../components/EncounterScreen";
-import DivisionLayout from "../components/Division";
-import DiceBattle from "../components/DiceBattle";
 import { useRouteLoaderData } from "react-router-dom";
+import PageContent from "components/Layouts/PageContent";
+import DivisionLayout from "components/Layouts/Division";
+import EncounterScreen from "components/EncounterScreen/EncounterScreen";
+import DiceBattle from "components/DiceBattle/DiceBattle";
+import main_bg from "assets/images/pokemon_bg.jpg";
 
 const CatchPage = () => {
   const { loadPokemons } = useRouteLoaderData("root");

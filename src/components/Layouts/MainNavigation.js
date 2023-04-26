@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "../assets/images/main_logo.png";
-import encyclopedia from "../assets/images/encyclopedia.png";
-import pikachu from "../assets/images/pikachu.png";
-import mypokemons from "..//assets/images/mypokemons.png";
+import logo from "assets/images/main_logo.png";
+import encyclopedia from "assets/images/encyclopedia.png";
+import pikachu from "assets/images/pikachu.png";
+import mypokemons from "assets/images/mypokemons.png";
 import styles from "./MainNavigation.module.css";
 import { signOut } from "firebase/auth";
-import { auth } from "../auth/firebase";
-import signout from "../assets/images/signout.png";
-import player from "../assets/images/player.png";
+import { auth } from "auth/firebase";
+import signout from "assets/images/signout.png";
+import player from "assets/images/player.png";
 import { useSelector } from "react-redux";
 
 const MainNavigation = () => {

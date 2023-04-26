@@ -1,11 +1,11 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Card from "../UI/Card";
-import Dice from "../UI/Dice";
-import styles from "./DiceBattle.module.css";
-import pokeball from "../assets/images/pokeball.png";
 import { useDispatch } from "react-redux";
-import { pocketActions } from "../store/pocket-slice";
 import { useNavigate } from "react-router-dom";
+import Card from "UI/Card";
+import Dice from "UI/Dice";
+import styles from "./DiceBattle.module.css";
+import { pocketActions } from "store/pocket-slice";
+import pokeball from "assets/images/pokeball.png";
 
 let wildPokemonAttack;
 const diceInitState = {

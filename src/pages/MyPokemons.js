@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import main_bg from "../assets/images/pokemon_bg.jpg";
-import DivisionLayout from "../components/Division";
-import PageContent from "../components/PageContent";
-import PokemonCardList from "../components/PokemonCardList";
-import PokemonList from "../components/PokemonList";
 import { useSelector } from "react-redux";
-import Modal from "../UI/Modal";
+import DivisionLayout from "components/Layouts/Division";
+import PageContent from "components/Layouts/PageContent";
+import PokemonCardList from "components/PokemonCard/PokemonCardList";
+import PokemonList from "components/PokemonCard/PokemonList";
+import Modal from "UI/Modal";
+import main_bg from "assets/images/pokemon_bg.jpg";
 
 const MyPokemonsPage = () => {
   const { myPokemons } = useSelector((state) => state.myPocket);

@@ -1,10 +1,10 @@
 import React from "react";
-import PageContent from "../components/PageContent";
-import main_bg from "../assets/images/pokemon_bg.jpg";
-import DivisionLayout from "../components/Division";
-import UserForm from "../components/UserForm";
-import { signupUser } from "../auth/auth_user";
-import { auth } from "../auth/firebase";
+import PageContent from "components/Layouts/PageContent";
+import main_bg from "assets/images/pokemon_bg.jpg";
+import DivisionLayout from "components/Layouts/Division";
+import UserForm from "components/Auth/UserForm";
+import { signupUser } from "auth/auth_user";
+import { auth } from "auth/firebase";
 
 const SignupPage = () => {
   const onSignup = (user) => {

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import PageContent from "../components/PageContent";
-import main_bg from "../assets/images/pokemon_bg.jpg";
-import DivisionLayout from "../components/Division";
-import UserForm from "../components/UserForm";
-import { googleSignIn } from "../auth/auth_user";
+import PageContent from "components/Layouts/PageContent";
+import main_bg from "assets/images/pokemon_bg.jpg";
+import DivisionLayout from "components/Layouts/Division";
+import UserForm from "components/Auth/UserForm";
+import { googleSignIn } from "auth/auth_user";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 

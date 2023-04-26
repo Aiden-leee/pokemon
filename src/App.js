@@ -2,17 +2,17 @@ import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout, { loader as initLoader } from "./pages/Root";
-import CatchPage from "./pages/Catch";
-import MainPage from "./pages/Main";
-import SigninPage from "./pages/Signin";
-import MyPokemonsPage from "./pages/MyPokemons";
-import MyPage from "./pages/MyPage";
-import { auth } from "./auth/firebase";
-import { getMyPokemons, requestThePokemon } from "./store/pocket-action";
-import { uiActions } from "./store/ui-slice";
-import { userActions } from "./store/user-slice";
+import CatchPage from "pages/Catch";
+import MainPage from "pages/Main";
+import SigninPage from "pages/Signin";
+import MyPokemonsPage from "pages/MyPokemons";
+import MyPage from "pages/MyPage";
+import { auth } from "auth/firebase";
+import { getMyPokemons, requestThePokemon } from "store/pocket-action";
+import { uiActions } from "store/ui-slice";
+import { userActions } from "store/user-slice";
 import { onAuthStateChanged } from "firebase/auth";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "components/Layouts/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: "mypokemons",
-        element: <MyPokemonsPage />,
+        element: (
+          <PrivateRoute>
+            <MyPokemonsPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "signin",

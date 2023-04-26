@@ -1,12 +1,12 @@
 import React, { Suspense, useState } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
-import main_bg from "../assets/images/pokemon_bg.jpg";
-import DivisionLayout from "../components/Division";
-import PageContent from "../components/PageContent";
-import PokemonList from "../components/PokemonList";
+import DivisionLayout from "components/Layouts/Division";
+import PageContent from "components/Layouts/PageContent";
+import PokemonList from "components/PokemonCard/PokemonList";
+import PokemonCardList from "components/PokemonCard/PokemonCardList";
+import Modal from "UI/Modal";
 import ReactLoading from "react-loading";
-import PokemonCardList from "../components/PokemonCardList";
-import Modal from "../UI/Modal";
+import main_bg from "assets/images/pokemon_bg.jpg";
 
 const MainPage = () => {
   const [currentName, setCurrentName] = useState("이상해씨");

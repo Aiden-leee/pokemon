@@ -1,9 +1,9 @@
 import React from "react";
-import DivisionLayout from "../components/Division";
-import PageContent from "../components/PageContent";
-import main_bg from "../assets/images/pokemon_bg.jpg";
-import PokemonCardList from "../components/PokemonCardList";
-import User from "../components/User";
+import DivisionLayout from "components/Layouts/Division";
+import PageContent from "components/Layouts/PageContent";
+import PokemonCardList from "components/PokemonCard/PokemonCardList";
+import User from "components/Auth/User";
+import main_bg from "assets/images/pokemon_bg.jpg";
 
 const MyPage = () => {
   return (

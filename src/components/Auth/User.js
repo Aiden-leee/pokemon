@@ -1,7 +1,7 @@
 import { deleteUser, signOut } from "firebase/auth";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../auth/firebase";
+import { auth } from "auth/firebase";
 import styles from "./User.module.css";
 import { useSelector } from "react-redux";
 

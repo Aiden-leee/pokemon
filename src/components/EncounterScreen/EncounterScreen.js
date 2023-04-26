@@ -1,6 +1,6 @@
 import React from "react";
 import { HiOutlineRefresh } from "react-icons/hi";
-import Card from "../UI/Card";
+import Card from "UI/Card";
 import styles from "./EncounterScreen.module.css";
 
 const EncounterScreen = (props) => {

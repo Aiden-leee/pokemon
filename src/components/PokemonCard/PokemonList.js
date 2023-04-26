@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import SearchForm from "components/Search/SearchForm";
 import styles from "./PokemonList.module.css";
-import modapi from "../assets/images/modapi.png";
-import SearchForm from "./SearchForm";
+import modapi from "assets/images/modapi.png";
 
 const PokemonList = React.memo(({ pokemons, onSelectPokemon }) => {
   const [searchPokemon, setSearchPokemon] = useState([]);

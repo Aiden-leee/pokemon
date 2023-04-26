@@ -24,21 +24,6 @@ export const requestThePokemon = (myPocket) => {
 
 export const getMyPokemons = (user) => {
   return (dispatch) => {
-    //
-    // const uid = localStorage.getItem("uid");
-    // const starCountRef = ref(db, "users/" + uid);
-    // onValue(starCountRef, (snapshot) => {
-    //   let data = snapshot.val();
-    //   if (data === null) data = false;
-    //   dispatch(
-    //     pocketActions.replaceState({
-    //       myPokemons: data.myPokemons || [],
-    //       totalPokemons: data.totalPokemon || 0,
-    //       uid: data.uid || null,
-    //     })
-    //   );
-    // });
-    // 데이터 한번만 읽기
     const dbRef = ref(db);
     get(child(dbRef, `users/${user.uid}`))
       .then((snapshot) => {

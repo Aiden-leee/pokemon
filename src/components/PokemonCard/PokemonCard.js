@@ -1,9 +1,9 @@
-import styles from "./PokemonCard.module.css";
-import { pokemonTypesTransform } from "../utils/pokemonTypesTransform";
-import { TbTrashX } from "react-icons/tb";
+import { pokemonTypesTransform } from "utils/pokemonTypesTransform";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { pocketActions } from "../store/pocket-slice";
+import { pocketActions } from "store/pocket-slice";
+import { TbTrashX } from "react-icons/tb";
+import styles from "./PokemonCard.module.css";
 
 const PokemonCard = ({ pokemon, confirm }) => {
   const location = useLocation();

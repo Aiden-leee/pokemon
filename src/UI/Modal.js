@@ -1,9 +1,9 @@
 import React from "react";
-import Card from "./Card";
 import ReactDOM from "react-dom";
+import Card from "./Card";
+import PokemonCard from "components/PokemonCard/PokemonCard";
+import PokemonCardBox from "components/PokemonCard/PokemonCardBox";
 import styles from "./Modal.module.css";
-import PokemonCard from "../components/PokemonCard";
-import PokemonCardBox from "../components/PokemonCardBox";
 
 const ModalOverlay = (props) => {
   return <div className={styles.overlay} onClick={props.onConfirm}></div>;
