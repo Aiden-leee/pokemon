@@ -19,6 +19,10 @@ PokeApi 를 활용하여 포켓몬 1세대 목록 150마리를 불러오고,
 후에 나의 포켓몬 목록에서 확인할 수 있습니다.
 
 
+## Skills
+Pokemon-demo 에 제작할 때 사용된 스펙입니다.<br />
+React, Redux-toolkit, firebase realtime database, css module
+
 ### Main Pokemon List Route
 포켓몬 150마리를 볼수 있는 페이지이며, 검색을 통해 포켓몬을 검색할 수 도 있습니다.<br />
 클릭 시 모달을 통해 포켓몬 정보를 확인 할 수 있습니다.
@@ -39,8 +43,5 @@ MyPage 에서 회원탈퇴 및 자신의 정보를 확인 할 수 있습니다.
 
 
 
-## Skills
-Pokemon-demo 에 제작할 때 사용된 스펙입니다.<br />
-React, Redux-toolkit, firebase realtime database, css module
 
 
